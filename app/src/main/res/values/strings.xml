@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Swipe Project</string>
+    <string name="add_product">Add Product</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="enter_product_type">Choose Product Type</string>
+    <string name="enter_product_price">Enter Product Price</string>
+    <string name="enter_product_tax">Enter Product Tax</string>
+    <string name="send_data_to_api">Send Data to API</string>
+    <string name="default_response">API Response</string>
+    <string name="name">name:</string>
+    <string name="type">type:</string>
+    <string name="price">price:</string>
+    <string name="tax">tax:</string>
+    
+    
+    <string-array name="product_types">
+        <item>Convenience</item>
+        <item>Shopping</item>
+        <item>Specialty</item>
+        <item>Unsought</item>
+    </string-array>
+
+</resources>

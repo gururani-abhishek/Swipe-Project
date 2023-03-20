@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/iv_product"
+        android:scaleType="fitCenter"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_product_name"
+        app:layout_constraintTop_toBottomOf="@id/iv_product"
+        />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:ellipsize="end"
+        app:layout_constraintLeft_toRightOf="@id/tv_name"
+        app:layout_constraintRight_toLeftOf="@id/tv_type"
+        app:layout_constraintTop_toBottomOf="@id/iv_product"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:textAllCaps="true"
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:textSize="18sp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_product_name"
+        app:layout_constraintRight_toLeftOf="@id/tv_product_type"
+        app:layout_constraintTop_toBottomOf="@id/iv_product"
+        />
+
+    <TextView
+        android:id="@+id/tv_product_type"
+        android:layout_width="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintLeft_toRightOf="@id/tv_type"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_product"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:layout_marginTop="6dp"
+        android:textAllCaps="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv_product_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name"
+        />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_price"
+        app:layout_constraintRight_toLeftOf="@id/tv_tax"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name" />
+
+    <TextView
+        android:id="@+id/tv_tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_type"
+        app:layout_constraintLeft_toRightOf="@id/tv_product_price"
+        android:text="@string/tax"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintRight_toLeftOf="@id/tv_product_tax"
+        android:layout_marginTop="6dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_product_tax"
+        android:layout_width="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/tv_tax"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_type"
+        android:layout_marginTop="6dp"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
