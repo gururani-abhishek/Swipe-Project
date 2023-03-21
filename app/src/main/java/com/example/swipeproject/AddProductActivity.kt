@@ -28,18 +28,21 @@ class AddProductActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)
 
-
-
+        // to send data to API
         val sendDataToApiBtn = findViewById<Button>(R.id.bt_post)
         sendDataToApiBtn.setOnClickListener {
             postDataUsingVolley()
         }
 
+        // product type options spinner
         val productTypeSpinner = findViewById<Spinner>(R.id.s_product_type)
         val productTypes = resources.getStringArray(R.array.product_types)
+
+        // using Array Adapter populating spinner
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productTypes)
         productTypeSpinner.adapter = adapter
 
+        // overriding member functions of the spinner
         productTypeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 productType = productTypes[position]
@@ -49,7 +52,6 @@ class AddProductActivity : AppCompatActivity() {
 
             }
         }
-
 
         dismissSoftKeyboardOnBkgTap(findViewById(R.id.cl_bkg_addProj))
     }
@@ -96,6 +98,9 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     private fun postDataUsingVolley1(name: String, type: String, price: Int, tax: String) {
+
+        // function to post data using volley POST request
+
         // url to post our data
         val url = "https://app.getswipe.in/api/public/add"
 
@@ -109,7 +114,7 @@ class AddProductActivity : AppCompatActivity() {
 
                 Toast.makeText(this@AddProductActivity, "Data added to API", Toast.LENGTH_SHORT).show()
                 try {
-
+                    // showing the response in responseTV for better UX for the user
                     val respObj = JSONObject(response)
                     val message = respObj.getString("message")
                     val productId = respObj.getString("product_id")
@@ -126,6 +131,7 @@ class AddProductActivity : AppCompatActivity() {
             override fun getParams(): Map<String, String> {
                 val params: HashMap<String, String> = HashMap()
 
+                // adding data to four params -> product_name, product_type, price, tax
                 params["product_name"] = name
                 params["product_type"] = type
                 params["price"] = price.toString()
@@ -134,6 +140,8 @@ class AddProductActivity : AppCompatActivity() {
                 return params
             }
         }
+
+        // using singleton get instance, making network call
         MySingleton.getInstance(this).addToRequestQueue(request)
     }
 }
