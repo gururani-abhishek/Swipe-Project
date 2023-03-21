@@ -17,6 +17,7 @@ import com.android.volley.toolbox.JsonArrayRequest
 class MainActivity : AppCompatActivity() {
     private lateinit var mAdapter : ProductListAdapter
     private lateinit var productArray : ArrayList<Product>
+    private lateinit var productFoundIdx : ArrayList<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,11 +47,17 @@ class MainActivity : AppCompatActivity() {
             else {
 
                 // searchProduct() takes productArray and productName as arguments
-                val productIndex = searchProduct(productArray, productName)
+                val flagForProductFound = searchProduct(productArray, productName)
 
-                if (productIndex != -1) {
+                if (flagForProductFound != -1) {
+                    val foundProducts = ArrayList<Product>()
+                    // productFoundIdx holds all the indices at which the searched product is found
+                    for(i in 0 until productFoundIdx.size) {
+                        foundProducts.add(productArray[productFoundIdx[i]])
+                    }
+
                     // productName is available in productArray
-                    mAdapter.updateProducts(arrayListOf(productArray[productIndex]))
+                    mAdapter.updateProducts(foundProducts)
                 } else {
                     // product name is not available, make a Toast message for the user
                     Toast.makeText(this, "ops, product not found", Toast.LENGTH_SHORT).show()
@@ -102,13 +109,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchProduct(productArray: java.util.ArrayList<Product>, productName : String): Int {
+        var flagForProductFound = -1;
+        productFoundIdx = ArrayList()
         // loop through the entire productArray and check if any product with productName is present
         for(i in 0 until productArray.size) {
-            if(productArray[i].productName == productName) return i
+            if(productArray[i].productName == productName) {
+                productFoundIdx.add(i)
+                flagForProductFound = 1;
+            }
         }
 
         // if not then return -1
-        return -1;
+        return flagForProductFound;
     }
 
     private fun fetch() {
